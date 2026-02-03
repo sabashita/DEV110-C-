@@ -1,30 +1,30 @@
 # Week 3: Personal Profile Card - Study Notes
 
-**Name:**
+**Name: Haiyang Li**
 
 ## Understanding Variables and Data Types
 
 **What are the four main data types you used in this assignment?**
 [List string, int, double, and bool - explain what each stores and give examples from your profile card]
 
-Answer:
+Answer:string , int , double, bool
 
 **Why did you use `double` for GPA instead of `int`?**
 [Explain the difference and why decimal precision matters for GPA]
 
-Answer:
+Answer:cause GPA is average of the total grades
 
 **How did you convert the yes/no input into a boolean?**
 [Explain the comparison operation you used]
 
-Answer:
+Answer: use result == "yes" straight to assignment to the bool variable
 
 ## Data Modeling Decisions
 
 **How did you organize the information into logical groups?**
 [Explain why you grouped certain pieces of information together (personal, academic, etc.)]
 
-Answer:
+Answer:Personal attribute is belong the people, the academic is from the effort, and extra information including the habbit, favorite, interesting things
 
 **Which pieces of information did you calculate rather than ask for?**
 [List the derived data: birth year, years to graduation, height conversion, honor status, age in months]
@@ -34,14 +34,14 @@ Answer:
 **Why is it better to calculate birth year from age rather than ask for both?**
 [Explain data consistency and reducing redundant input]
 
-Answer:
+Answer: using the day of now minus the age.
 
 ## Challenges and Solutions
 
 **Biggest challenge with this assignment:**
 [What was the hardest part? Type conversion, calculations, formatting, choosing data types?]
 
-Answer:
+Answer: I don't feel hardest part. If has, is convert height.
 
 **How you solved it:**
 [Explain your approach to overcoming the challenge]
@@ -58,17 +58,18 @@ Answer:
 **How do you convert string input to a number?**
 [Explain Parse methods: int.Parse(), double.Parse()]
 
-Answer:
+Answer:int.parse()
 
 **What calculation did you use to convert height from inches to feet and inches?**
 [Explain: feet = inches / 12, remaining = inches % 12]
 
-Answer:
+Answer:height / 30.48 for Feet,
+       height / 2.54 for Inches
 
 **How did you determine if someone is an honor student?**
 [Explain the boolean comparison: gpa >= 3.5]
 
-Answer:
+Answer: the gpa >= 3.5
 
 ## Output Formatting
 
@@ -144,16 +145,16 @@ Answer:
 
 ## Time Spent
 
-**Total time:** [X hours]
+**Total time:** [3 hours]
 
 **Breakdown:**
 
--   Understanding data types and planning variables: [X hours]
--   Collecting user input with correct types: [X hours]
--   Implementing calculations: [X hours]
--   Formatting output: [X hours]
--   Testing and debugging: [X hours]
--   Writing documentation: [X hours]
+-   Understanding data types and planning variables: [0.2 hours]
+-   Collecting user input with correct types: [0.2 hours]
+-   Implementing calculations: [1 hours]
+-   Formatting output: [0.2 hours]
+-   Testing and debugging: [0.2 hours]
+-   Writing documentation: [1 hours]
 
 **Most time-consuming part:** [Which aspect took the longest and why?]
 
@@ -174,4 +175,4 @@ Answer:
 **What real-world system would you like to model next?**
 [Shopping cart, game character, recipe calculator, etc.]
 
-Answer:
+Answer:game character.
