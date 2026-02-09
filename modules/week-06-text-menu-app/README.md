@@ -49,31 +49,38 @@ Update a console program that follows this flow:
     **Option 1: Greeting Card**
     - Prompts: `Enter your name: ` and `Enter a short message: `
     - Use `Trim()`, `ToUpper()`, `PadRight()`, and `string.Format()`
-    - Print a boxed card with three lines (hello, shout, and message)
+    - Print a boxed card with three lines (hello, greeting with uppercase name, and message)
 
     **Option 2: Name Tag Formatter**
     - Prompts: `Enter first name: ` and `Enter last name: `
     - Build full name with concatenation
-    - Build initials with `string.Format` and indexing
-    - Print name tag, initials, and lowercase version
+    - Build initials with string indexing and `ToUpper()`
+    - Print name tag (with bracket), initials, and lowercase version
 
     **Option 3: Phrase Analyzer**
     - Prompt: `Enter a phrase: `
-    - Use `Trim()`, `Replace()`, `Split()`, and `string.Join()`
-    - Print length, contains 'a', dashed phrase, and words list
+    - Use `Trim()`, `Length`, `Contains()`, `Replace()`, `Split()`, and `string.Join()`
+    - Print length, contains check, dashed phrase, and words list
 
     **Option 4: Fancy Receipt Line**
     - Prompts: `Enter item name: `, `Enter price: `, `Enter quantity (1-9): `
-    - Use composite formatting with alignment and currency
-    - Print a small receipt-style table
+    - Use composite formatting with alignment and currency (`:C2`)
+    - Print a receipt-style table with header and data row
 
     **Option 5: Menu Banner Builder**
     - Prompts: `Enter a title: `, `Enter a subtitle: `, `Enter width (30-60): `
-    - Use `new string('=', width)` and alignment
-    - Print a banner with centered title/subtitle and alignment samples
+    - Use `new string('=', width)`, `PadLeft()`, `PadRight()`, and `ToUpper()`
+    - Print a banner with centered title/subtitle and three alignment examples
 
-    **Option 6: Exit**
-    - Output: `Goodbye!`
+    **Option 6: Exit with String Analysis**
+    - Prompt: `Enter a closing word: `
+    - Demonstrate these four string methods:
+        - `Equals()` with `StringComparison.OrdinalIgnoreCase` (compare to "goodbye")
+        - `Substring()` (extract first 3 characters)
+        - `EndsWith()` (check for "!")
+        - `IndexOf()` (find position of space character)
+    - Display the results of all four operations
+    - Then print: `Goodbye!`
 
 ---
 
@@ -102,6 +109,20 @@ Enter a short message: Welcome!
 | Nice to meet you, ADA.                        |
 | Message: Welcome!                             |
 ------------------------------------------------
+
++------------------------------------------------+
+| 1) Greeting Card                               |
+| 2) Name Tag Formatter                          |
+| 3) Phrase Analyzer                             |
+| 4) Fancy Receipt Line                          |
+| 5) Menu Banner Builder                         |
+| 6) Exit                                        |
++------------------------------------------------+
+Choose an option (1-6): 6
+
+Enter a closing word: hello!
+Is 'goodbye': False | First 3: 'hel' | Has !: True | Space at: -1
+Goodbye!
 ```
 
 ---
@@ -139,20 +160,23 @@ Enter a short message: Welcome!
 
 ## Grading Criteria
 
-Your assignment will be automatically graded with 5 test cases:
+Your assignment will be automatically graded with 7 test cases:
 
-| Test Area                       | Points  | Tests  |
-| ------------------------------- | ------- | ------ |
-| **Basic Setup**                 |         |        |
-| Program compiles                | 10      | Test01 |
-| **Menu + Validation**           |         |        |
-| Menu repeats + input validation | 30      | Test02 |
-| **Menu Options**                |         |        |
-| Option outputs and calculations | 30      | Test03 |
-| **Study Notes**                 |         |        |
-| STUDY_NOTES.md exists           | 10      | Test04 |
-| All sections completed          | 20      | Test05 |
-| **Total**                       | **100** |        |
+| Test Area                         | Points  | Tests  |
+| --------------------------------- | ------- | ------ |
+| **Basic Setup**                   |         |        |
+| Program compiles                  | 10      | Test01 |
+| **Menu + Validation**             |         |        |
+| Menu repeats + input validation   | 20      | Test02 |
+| **Menu Options**                  |         |        |
+| All menu options work correctly   | 20      | Test03 |
+| **String Analysis (Option 6)**    |         |        |
+| Closing analysis basic            | 10      | Test04 |
+| Closing analysis with punctuation | 10      | Test05 |
+| **Study Notes**                   |         |        |
+| STUDY_NOTES.md exists             | 10      | Test06 |
+| All sections completed            | 20      | Test07 |
+| **Total**                         | **100** |        |
 
 ---
 
@@ -160,10 +184,12 @@ Your assignment will be automatically graded with 5 test cases:
 
 - Use `do-while` when you must ask at least once before checking validity.
 - Keep your menu loop running until the user chooses Exit.
-- Match prompts and output text exactly.
 - Add a blank line between menu actions to keep output readable.
 - Use alignment like `{0,-12}` and `{1,8}` for simple columns.
 - Use `PadLeft` and `PadRight` to build centered text.
+- For Option 6: Check the length before using `Substring()` to avoid errors.
+- For Option 6: Use `StringComparison.OrdinalIgnoreCase` for case-insensitive comparison.
+- Tests are flexible with label wording, but make sure to display all required values.
 
 ---
 

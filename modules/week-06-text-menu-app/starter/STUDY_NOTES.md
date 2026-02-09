@@ -32,17 +32,29 @@ Answer:
 Answer:
 
 **How did you validate the menu choice (1–6)?**
-[Explain your range check logic]
-
-Answer:
-
-**How did you validate numeric inputs like price and width?**
-[Explain your validation logic]
+[Explain your range check logic and do-while loop]
 
 Answer:
 
 **How did you handle invalid input (non-numbers)?**
-[Explain how int.TryParse works]
+[Explain how int.TryParse and double.TryParse work]
+
+Answer:
+
+## String Operations
+
+**Which string methods did you use across the different menu options?**
+[List key methods like Trim, ToUpper, ToLower, Replace, Split, Join, Contains, PadLeft, PadRight, and formatting techniques]
+
+Answer:
+
+**Which four string methods did you demonstrate in Option 6 (String Analysis)?**
+[Explain Equals with StringComparison, Substring, EndsWith, and IndexOf]
+
+Answer:
+
+**What's the difference between string concatenation and interpolation?**
+[Explain when you used each approach and which you prefer]
 
 Answer:
 

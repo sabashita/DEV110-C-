@@ -3,7 +3,6 @@
 - Instructor: Zak Brinlee
 - Term: Winter 2026
 -
-- Programmer: YourName
 - Assignment: Week 6: Text Menu App
 -
 - What does this program do?:
@@ -83,34 +82,105 @@ public class TextMenuAppTests
     public void Test03_MenuOptionsWork()
     {
         ProvideInput(
+            "1", "Ada", "Welcome!",  // greeting card
             "2", "Ada", "Lovelace", // name tag
             "3", "hello world",     // phrase analyzer
             "4", "Pen", "2.5", "2", // receipt line
             "5", "Menu", "Today", "30", // banner
-            "6"                       // exit
+            "6", "test"             // exit with closing word
         );
 
         Program.Main(Array.Empty<string>());
         string outputLower = _output.ToString().ToLower();
 
-        bool hasNameTag = outputLower.Contains("name tag: [ada lovelace");
-        bool hasInitials = outputLower.Contains("initials: al");
-        bool hasLowercase = outputLower.Contains("lowercase: ada lovelace");
-        bool hasLength = outputLower.Contains("length:");
-        bool hasDashed = outputLower.Contains("dashed: hello-world");
-        bool hasWords = outputLower.Contains("words: hello, world");
+        // Option 1: Greeting Card
+        bool hasGreeting = outputLower.Contains("hello, ada") || outputLower.Contains("hello ada");
+        bool hasMessage = outputLower.Contains("message") && outputLower.Contains("welcome!");
+
+        // Option 2: Name Tag Formatter
+        bool hasNameTag = Regex.IsMatch(outputLower, @"(name\s*tag|tag)[:\s]*\[?ada lovelace");
+        bool hasInitials = Regex.IsMatch(outputLower, @"(initial|initials)[:\s]*al");
+        bool hasLowercase = outputLower.Contains("ada lovelace") && (outputLower.Contains("lowercase") || outputLower.Contains("lower"));
+
+        // Option 3: Phrase Analyzer
+        bool hasLength = Regex.IsMatch(outputLower, @"(length|len)[:\s]*\d+");
+        bool hasDashed = outputLower.Contains("hello-world");
+        bool hasWords = outputLower.Contains("hello") && outputLower.Contains("world");
+
+        // Option 4: Receipt
         bool hasReceiptHeader = outputLower.Contains("item") && outputLower.Contains("total");
-        bool hasCurrency = Regex.IsMatch(outputLower, @"\$\s*5\.00|\$5\.00");
-        bool hasBanner = outputLower.Contains("centered:") && outputLower.Contains("left:") && outputLower.Contains("right:");
+        bool hasCurrency = Regex.IsMatch(outputLower, @"\$\s*5\.00");
+
+        // Option 5: Banner
+        bool hasBanner = (outputLower.Contains("centered") || outputLower.Contains("center")) &&
+                         (outputLower.Contains("left")) &&
+                         (outputLower.Contains("right"));
 
         Assert.IsTrue(
-            hasNameTag && hasInitials && hasLowercase && hasLength && hasDashed && hasWords && hasReceiptHeader && hasCurrency && hasBanner,
+            hasGreeting && hasMessage && hasNameTag && hasInitials && hasLowercase &&
+            hasLength && hasDashed && hasWords && hasReceiptHeader && hasCurrency && hasBanner,
             "❌ Menu option output missing or incorrect\n" +
-            "💡 Tip: Match prompts and output formatting exactly");
+            "💡 Tip: Make sure all options display the required transformed strings");
     }
 
     [TestMethod]
-    public void Test04_StudyNotesFileExists()
+    public void Test04_ClosingAnalysisBasic()
+    {
+        ProvideInput(
+            "6", "goodbye"  // exit with exact match word
+        );
+
+        Program.Main(Array.Empty<string>());
+        string output = _output.ToString().ToLower();
+
+        // Check that Equals comparison works (should match 'goodbye')
+        bool hasGoodbyeMatch = Regex.IsMatch(output, @"(is|matches|equals).+'goodbye'.+true");
+
+        // Check that Substring extracts first 3 characters
+        bool hasSubstring = output.Contains("goo") && Regex.IsMatch(output, @"(first|preview|start).+3.+'goo'");
+
+        // Check that EndsWith detects no exclamation
+        bool hasEndsWith = Regex.IsMatch(output, @"(has|ends).+!.+(false|no)");
+
+        // Check that IndexOf finds no space
+        bool hasIndexOf = Regex.IsMatch(output, @"(space|index).+(-1|not found|none)");
+
+        Assert.IsTrue(
+            hasGoodbyeMatch && hasSubstring && hasEndsWith && hasIndexOf,
+            "❌ Closing analysis missing or incorrect\n" +
+            "💡 Tip: Use Equals with StringComparison.OrdinalIgnoreCase, Substring, EndsWith, and IndexOf");
+    }
+
+    [TestMethod]
+    public void Test05_ClosingAnalysisWithPunctuation()
+    {
+        ProvideInput(
+            "6", "hello world!"  // exit with punctuation and space
+        );
+
+        Program.Main(Array.Empty<string>());
+        string output = _output.ToString().ToLower();
+
+        // Check that comparison returns false (not 'goodbye')
+        bool hasNoMatch = Regex.IsMatch(output, @"(is|matches|equals).+'goodbye'.+(false|no)");
+
+        // Check that Substring extracts first 3 characters from 'hello world!'
+        bool hasSubstring = output.Contains("hel") && Regex.IsMatch(output, @"(first|preview|start).+3.+'hel'");
+
+        // Check that EndsWith detects exclamation mark
+        bool hasEndsWith = Regex.IsMatch(output, @"(has|ends).+!.+(true|yes)");
+
+        // Check that IndexOf finds space at position 5
+        bool hasIndexOf = Regex.IsMatch(output, @"(space|index).+5");
+
+        Assert.IsTrue(
+            hasNoMatch && hasSubstring && hasEndsWith && hasIndexOf,
+            "❌ Closing analysis with punctuation/spaces incorrect\n" +
+            "💡 Tip: Test EndsWith for '!' and IndexOf for ' ' (space character)");
+    }
+
+    [TestMethod]
+    public void Test06_StudyNotesFileExists()
     {
         string testDir = Path.GetDirectoryName(typeof(TextMenuAppTests).Assembly.Location);
         string starterPath = Path.Combine(testDir, "..", "..", "..", "..", "starter", "STUDY_NOTES.md");
@@ -125,7 +195,7 @@ public class TextMenuAppTests
     }
 
     [TestMethod]
-    public void Test05_StudyNotesAllSectionsCompleted()
+    public void Test07_StudyNotesAllSectionsCompleted()
     {
         string testDir = Path.GetDirectoryName(typeof(TextMenuAppTests).Assembly.Location);
         string starterPath = Path.Combine(testDir, "..", "..", "..", "..", "starter", "STUDY_NOTES.md");
