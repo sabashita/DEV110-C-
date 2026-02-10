@@ -1,6 +1,6 @@
 # Week 2: Calculator Lite - Study Notes
 
-**Name:**
+**Name:Haiyang Li**
 
 ## Understanding Data Types
 

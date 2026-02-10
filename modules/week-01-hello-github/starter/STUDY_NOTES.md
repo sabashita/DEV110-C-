@@ -72,6 +72,12 @@ Answer: We have to keeping the main branch clean and stable without "bug", cause
 1.Git/GitHub, but no limited, I will research more detail
 2.echo 'export PATH="/usr/local/share/dotnet:$PATH"' >> ~/.zshrc && source ~./zshrc && hash -r
 (cause I installed the .NET SDK 10.0 by brew, and when I was run the dotnet run command was failed,so that I download the offical .NET SDK 9.0, and run agian, but still couldn't works. Then I search online, it must change the default setting of variable of environment). And another command I learned is "which dotnet", "dotnet --list-runtimes".
+git log --oneline --modules/week/....
+git show
+git checkout main
+git status
+git branch
+
 3.using the command terminal to run the c# files
 
 **How this connects to professional development:**
