@@ -93,3 +93,6 @@ labs/**/solution/**
 !labs/**/solution/Program.cs
 !labs/**/solution/*.csproj
 
+backup/
+modules/
+.DS_Store
