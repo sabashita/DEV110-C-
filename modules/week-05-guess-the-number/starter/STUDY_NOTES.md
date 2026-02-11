@@ -1,18 +1,18 @@
 # Week 5: Guess the Number - Study Notes
 
-**Name:**
+**Name:Haiyang Li**
 
 ## Loop Types
 
 **How is a `do-while` loop different from a `while` loop?**
 [Explain when each loop is best used]
 
-Answer:
+Answer: do repeat things and determine
 
 **Where did you use a `do-while` loop in this assignment and why?**
 [Describe the input validation use]
 
-Answer:
+Answer:when first time typing needed
 
 **Where did you use a `while` loop and why?**
 [Describe the guessing loop]
@@ -99,15 +99,15 @@ Answer:
 
 ## Time Spent
 
-**Total time:** [X hours]
+**Total time:** [3.5 hours]
 
 **Breakdown:**
 
-- Planning the loops: [X hours]
-- Input validation: [X hours]
-- Guessing logic: [X hours]
-- Testing and debugging: [X hours]
-- Writing documentation: [X hours]
+- Planning the loops: [1 hours]
+- Input validation: [1 hours]
+- Guessing logic: [30 hours]
+- Testing and debugging: [20 hours]
+- Writing documentation: [40 hours]
 
 **Most time-consuming part:** [Which aspect took the longest and why?]
 
