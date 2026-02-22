@@ -81,8 +81,9 @@ Desktop.ini
 .vscode/tasks.json.local
 
 # GitHub files
-.github
-.github/copilot-instructions.md
+.github/instructions
+.github/CODEOWNERS
+.github/PULL_REQUEST_TEMPLATE.md
 
 # Sensitive files
 **/solution/
