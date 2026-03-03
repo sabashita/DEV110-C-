@@ -1,0 +1,9 @@
+
+# .NET build artifacts
+bin/
+obj/
+**/bin/
+**/obj/
+
+# macOS
+.DS_Store
